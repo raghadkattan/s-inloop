@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skinloop | متجر العناية بالبشرة</title>
+    <!-- استيراد الخط والتنسيقات -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- الهيدر وشعار البراند -->
+        <header class="header">
+            <img src="skinloop.jpg" alt="Skinloop Logo" class="brand-logo">
+        </header>
+
+        <!-- 1. الشاشة الرئيسية (الأقسام الرئيسية) -->
+        <div id="mainCategoriesView" class="categories-grid">
+            <div class="category-card" onclick="openBodySection()">
+                <div class="category-icon">✨</div>
+                <div class="category-title">قسم العناية بالجسم</div>
+                <div class="category-subtitle">سكرابات، لوشنات، دروبرز، وبكجات جسم</div>
+            </div>
+
+            <div class="category-card" onclick="showProducts('packages', 'main')">
+                <div class="category-icon">🎁</div>
+                <div class="category-title">قسم البكجات</div>
+                <div class="category-subtitle">عروض وبكجات متكاملة وموفرة</div>
+            </div>
+        </div>
+
+        <!-- 2. الشاشة الفرعية (أقسام العناية بالجسم) -->
+        <div id="bodySubCategoriesView" class="sub-container" style="display: none;">
+            <button class="back-btn" onclick="showMainHome()">← العودة للرئيسية</button>
+            <h2 class="section-title">✨ منتجات العناية بالجسم</h2>
+
+            <div class="categories-grid">
+                <div class="category-card" onclick="showProducts('scrubs', 'body')">
+                    <div class="category-icon">🌿</div>
+                    <div class="category-title">قسم السكرابات</div>
+                    <div class="category-subtitle">تقشير وتفتيح البشرة</div>
+                </div>
+
+                <div class="category-card" onclick="showProducts('lotions', 'body')">
+                    <div class="category-icon">🧴</div>
+                    <div class="category-title">قسم اللوشنات</div>
+                    <div class="category-subtitle">ترطيب وتنعيم </div>
+                </div>
+
+                <div class="category-card" onclick="showProducts('oils', 'body')">
+                    <div class="category-icon">💧</div>
+                    <div class="category-title">دروبرز عطرية </div>
+                    <div class="category-subtitle">روائح فواحة  وثبات عالي</div>
+                </div>
+
+                <div class="category-card" onclick="showProducts('body-packages', 'body')">
+                    <div class="category-icon">🌸</div>
+                    <div class="category-title">بكجات الجسم</div>
+                    <div class="category-subtitle">مجموعات العناية بالجسم</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. شاشة عرض المنتجات -->
+        <div id="productsView" class="products-container" style="display: none;">
+            
+            <button class="back-btn" id="backBtn" onclick="goBackFromProducts()">← العودة</button>
+            <h2 class="section-title" id="currentCategoryTitle">عنوان القسم</h2>
+
+            <!-- منتجات السكراب -->
+            <div id="scrubs" class="category-products-group" style="display: none;">
+                <div class="product-card" onclick="openProductDetails('scrub-rose')">
+                    <img src="images/scrub-rose.jpg" alt="سكراب الورد" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">سكراب الورد</div>
+                        <div class="product-price">45,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('سكراب الورد', 45000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card" onclick="openProductDetails('scrub-hibiscus')">
+                    <img src="images/scrub-hibiscus.jpg" alt="سكراب الكركديه" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">سكراب الكركديه</div>
+                        <div class="product-price">45,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('سكراب الكركديه', 45000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card" onclick="openProductDetails('scrub-nila')">
+                    <img src="images/scrub-nila.jpg" alt="سكراب النيلة" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">سكراب النيلة</div>
+                        <div class="product-price">50,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('سكراب النيلة', 50000)">+ إضافة</button>
+                </div>
+            </div>
+
+            <!-- منتجات اللوشن -->
+            <div id="lotions" class="category-products-group" style="display: none;">
+                <div class="product-card" onclick="openProductDetails('lotion-whitening')">
+                    <img src="images/lotion-whitening.jpg" alt="لوشن مفتح" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">لوشن مفتح</div>
+                        <div class="product-price">60,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('لوشن مفتح', 60000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card" onclick="openProductDetails('lotion-dove')">
+                    <img src="images/lotion-dove.jpg" alt="لوشن بريحة دوف" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">لوشن بريحة دوف</div>
+                        <div class="product-price">50,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('لوشن بريحة دوف', 50000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card" onclick="openProductDetails('lotion-pomegranate')">
+                    <img src="images/lotion-pomegranate.jpg" alt="لوشن بريحة الرمان" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">لوشن بريحة الرمان</div>
+                        <div class="product-price">50,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('لوشن بريحة الرمان', 50000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card" onclick="openProductDetails('lotion-rose')">
+                    <img src="images/lotion-rose.jpg" alt="لوشن بريحة الورد" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">لوشن بريحة الورد</div>
+                        <div class="product-price">50,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('لوشن بريحة الورد', 50000)">+ إضافة</button>
+                </div>
+            </div>
+
+            <!-- الزيوت العطرية -->
+            <div id="oils" class="category-products-group" style="display: none;">
+                <div class="product-card" onclick="openProductDetails('oil-dove')">
+                    <img src="images/oil-dove.jpg" alt="زيت عطري بريحة دوف" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">زيت عطري بريحة دوف</div>
+                        <div class="product-price">35,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('زيت عطري بريحة دوف', 35000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card" onclick="openProductDetails('oil-pomegranate')">
+                    <img src="images/oil-pomegranate.jpg" alt="زيت عطري بريحة الرمان" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">زيت عطري بريحة الرمان</div>
+                        <div class="product-price">35,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('زيت عطري بريحة الرمان', 35000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card" onclick="openProductDetails('oil-rose')">
+                    <img src="images/oil-rose.jpg" alt="زيت عطري بريحة الورد" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">زيت عطري بريحة الورد</div>
+                        <div class="product-price">35,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('زيت عطري بريحة الورد', 35000)">+ إضافة</button>
+                </div>
+            </div>
+
+            <!-- بكجات الجسم -->
+            <div id="body-packages" class="category-products-group" style="display: none;">
+                <div class="product-card bundle-card" onclick="openProductDetails('package-dove')">
+                    <img src="images/package-dove.jpg" alt="بكج دوف للجسم" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">بكج دوف للجسم</div>
+                        <div class="product-price">115,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('بكج دوف للجسم', 115000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card bundle-card" onclick="openProductDetails('package-pomegranate')">
+                    <img src="images/package-pomegranate.jpg" alt="بكج الرمان للجسم" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">بكج الرمان للجسم</div>
+                        <div class="product-price">115,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('بكج الرمان للجسم', 115000)">+ إضافة</button>
+                </div>
+            </div>
+
+            <!-- قسم البكجات العام -->
+            <div id="packages" class="category-products-group" style="display: none;">
+                <div class="product-card bundle-card" onclick="openProductDetails('package-dove')">
+                    <img src="images/package-dove.jpg" alt="بكج دوف" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">بكج دوف </div>
+                        <div class="product-price">115,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('بكج دوف ', 115000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card bundle-card" onclick="openProductDetails('package-pomegranate')">
+                    <img src="images/package-pomegranate.jpg" alt="بكج الرمان" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">بكج الرمان </div>
+                        <div class="product-price">115,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('بكج الرمان ', 115000)">+ إضافة</button>
+                </div>
+
+                <div class="product-card bundle-card" onclick="openProductDetails('package-rose')">
+                    <img src="images/package-rose.jpg" alt="بكج الورد" class="product-img">
+                    <div class="product-info">
+                        <div class="product-name">بكج الورد </div>
+                        <div class="product-price">115,000 ل.س</div>
+                    </div>
+                    <button class="add-btn" onclick="event.stopPropagation(); addToCart('بكج الورد ', 115000)">+ إضافة</button>
+                </div>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            &copy; skinloop, glow, repeat 2026 <br>
+            Made by Sarar,Joudi,Raghad <br/>
+    Developed by Raghad Kattan 💻
+        </footer>
+    </div>
+
+    <!-- نافذة تفاصيل المنتج (Modal) -->
+    <div class="modal-overlay" id="productModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModalDirect()">✕</button>
+            <img src="" id="modalImg" class="modal-img" alt="صورة المنتج">
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <div id="modalPrice" class="modal-price"></div>
+
+            <div class="detail-section">
+                <div class="detail-title">🌸 الفوائد:</div>
+                <div id="modalBenefits"></div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">✨ طريقة الاستخدام:</div>
+                <div id="modalUsage"></div>
+            </div>
+
+            <div class="detail-section">
+                <div class="detail-title">🌿 المكونات الرئيسية:</div>
+                <div id="modalIngredients"></div>
+            </div>
+
+            <button class="modal-add-btn" id="modalAddBtn">+ إضافة للسلة</button>
+        </div>
+    </div>
+
+    <!-- نافذة السلة العائمة -->
+    <div class="cart-bar" id="cartBar">
+        <div class="cart-details">
+            <div class="cart-title">🛍️ سلة الشراء (<span id="cartCount">0</span>)</div>
+            <div class="cart-total">المجموع: <span id="cartTotal">0</span> ل.س</div>
+        </div>
+        <button class="send-btn" onclick="sendToWhatsapp()">إرسال الطلب عبر الواتساب 💬</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

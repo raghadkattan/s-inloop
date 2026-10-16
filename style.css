@@ -1,0 +1,323 @@
+:root {
+    --bg-color: #f7edee;
+    --card-bg: #ffffff;
+    --primary-color: #d4838f;
+    --primary-hover: #c06f7b;
+    --text-color: #5c4b4d;
+    --accent-color: #25D366;
+    --border-radius: 16px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 15px 15px 100px 15px;
+}
+
+.container {
+    width: 100%;
+    max-width: 440px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 25px rgba(212, 131, 143, 0.12);
+    padding: 20px 15px;
+}
+
+/* الهيدر والشعار - حجم متناسق وصغير أنيق */
+/* تعديل الهيدر ليأخذ العرض بالكامل وبشكل أنيق */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.brand-logo {
+    width: 100%;             /* تجعل الصورة تأخذ عرض الشاشة بالكامل */
+    max-height: 140px;       /* يتحكم بارتفاع البانر حتى لا يكون طويلاً جداً (يمكنكِ تعديل الرقم 140 حسب رغبتك) */
+    object-fit: cover;       /* لقص الصورة بانسجام دون أن تتشوه ملامحها */
+    border-radius: 10px;     /* حواف دائرية ناعمة للبانر */
+    display: block;
+    margin: 0 auto 8px auto;
+    box-shadow: 0 4px 12px rgba(212, 131, 143, 0.15);
+}
+
+.tagline {
+    font-size: 0.85rem;
+    color: #8c787a;
+    font-style: italic;
+}
+
+/* شبكة الأقسام */
+.categories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.category-card {
+    background: var(--bg-color);
+    padding: 15px 8px;
+    border-radius: 14px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgba(212, 131, 143, 0.25);
+    user-select: none;
+    transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.category-card:active {
+    transform: scale(0.95);
+    background-color: #f0dbdd;
+}
+
+.category-icon {
+    font-size: 1.8rem;
+    margin-bottom: 6px;
+}
+
+.category-title {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.category-subtitle {
+    font-size: 0.7rem;
+    color: #8c787a;
+    margin-top: 3px;
+}
+
+/* أزرار العودة والعناوين */
+.back-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 5px;
+}
+
+.category-products-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* كروت المنتجات */
+.product-card {
+    background: var(--bg-color);
+    padding: 10px 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    border: 1px solid rgba(212, 131, 143, 0.15);
+}
+
+.bundle-card {
+    border: 1px dashed var(--primary-color);
+}
+
+.product-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: #e0d0d2;
+    flex-shrink: 0;
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+.product-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.product-price {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 3px;
+}
+
+.add-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* النافذة المنبثقة للتفاصيل (Modal) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    width: 100%;
+    max-width: 440px;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px 18px;
+    position: relative;
+    box-shadow: 0 -5px 25px rgba(0,0,0,0.15);
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    background: var(--bg-color);
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-weight: bold;
+    color: var(--primary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    background-color: #e0d0d2;
+    margin-bottom: 12px;
+}
+
+.modal-title {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.modal-price {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+.detail-section {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    line-align: 1.4;
+}
+
+.detail-title {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2px;
+}
+
+.modal-add-btn {
+    width: 100%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* السلة العائمة */
+.cart-bar {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 30px);
+    max-width: 420px;
+    background: #ffffff;
+    border: 2px solid var(--primary-color);
+    border-radius: 16px;
+    padding: 10px 14px;
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.18);
+    z-index: 1000;
+}
+
+.cart-title {
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.cart-total {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.send-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 9px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.75rem;
+    color: #aaa;
+}
